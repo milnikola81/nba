@@ -8,9 +8,9 @@
 
 <h3>{{$team->name}}</h3>
 
-<p>{{$team->email}}</p>
-<p>{{$team->address}}</p>
-<p>{{$team->city}}</p>
+<p>Email: {{$team->email}}</p>
+<p>Adress: {{$team->address}}</p>
+<p>Hometown: {{$team->city}}</p>
 
 <ul>
     Players

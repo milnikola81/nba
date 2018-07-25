@@ -11,15 +11,39 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
     <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="/css/blog.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
 
   </head>
 
   <body>
 
-    @yield('content')
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link active" href="/teams">Home</a>
+          @if(auth()->check())
+            <a class="nav-link ml-auto" href="/logout">{{auth()->user()->name}}</a>
+            <a class="nav-link active ml-auto" href="/logout">Logout</a>
+         @else
+            <a class="nav-link ml-auto" href="/login">Login</a>
+            <a class="nav-link ml-auto" href="/register">Register</a>
+         @endif
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main" style="margin-top: 2rem">
+
+        @yield('content')
+
+        </div>
+      </div>
+    </div>
+
 
   </body>
 

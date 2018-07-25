@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 Route::get('/teams', 'TeamController@index');
 Route::get('/teams/{team}', 'TeamController@show');
+Route::get('/players/{player}', 'PlayerController@show');

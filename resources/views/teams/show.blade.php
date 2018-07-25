@@ -16,7 +16,7 @@
     Players
     @foreach($team->players as $player)
 
-    <li>{{ $player->first_name }} {{ $player->last_name }} </li>
+    <li><a href="/players/{{$player->id}}">{{ $player->first_name }} {{ $player->last_name }}</a></li>
     @endforeach
 </ul>
 

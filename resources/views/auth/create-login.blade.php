@@ -6,7 +6,6 @@
 
 @endsection('content')
 
-
 @section('content')
 
         <form action="/login" method="POST">

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Mail\VerifyAccount;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -32,8 +34,16 @@ class RegisterController extends Controller
             'password'=>bcrypt(request('password'))
         ]);
 
-        auth()->login($user);  //ugradjena funkcija za logovanje usera
+        // auth()->login($user);  //ugradjena funkcija za logovanje usera
+
+        Mail::to($user->email)->send(new VerifyAccount($user));
         
-        return redirect('/teams');
+        return redirect('/login');
+    }
+
+    public function verify(User $user)
+    {
+        $user->is_verified = 1;
+        $user->save();
     }
 }

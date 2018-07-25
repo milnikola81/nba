@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 class CommentController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('words', ['only' => 'store']);
+    }
+
     public function store(Team $team) {
         
         $this->validate(request(),[

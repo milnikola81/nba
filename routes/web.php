@@ -30,3 +30,7 @@ Route::get('/logout', 'LoginController@destroy');
 Route::post('/teams/{team}', 'CommentController@store');
 
 Route::get('/verify/{user}', 'RegisterController@verify');
+
+Route::get('/news', 'NewsController@index');
+Route::get('/news/{news}', 'NewsController@show');
+

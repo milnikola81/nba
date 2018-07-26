@@ -15,6 +15,8 @@
 
     <link href="/css/app.css" rel="stylesheet">
 
+    <link href="/css/nba.css" rel="stylesheet">
+
   </head>
 
   <body>

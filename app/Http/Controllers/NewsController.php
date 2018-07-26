@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\News;
 use App\User;
+use App\Team;
 
 class NewsController extends Controller
 {
@@ -20,5 +21,13 @@ class NewsController extends Controller
     {
         $news = News::with('user')->find($id);
         return view('news.show', compact(['news']));
+    }
+
+    public function showPostsWithTag()
+    {
+        $news = News::with('teams')->get();
+        dd($news);
+        // $news = News::where('name', $tag)->first()->posts()->paginate(10);
+        // return view('news.index', compact('news'));
     }
 }

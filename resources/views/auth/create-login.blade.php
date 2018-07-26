@@ -11,6 +11,11 @@
         <form action="/login" method="POST">
 
             {{ csrf_field() }}
+
+            
+            @if(session('message'))
+                <h4>{{session('message')}}</h4>
+            @endif
             
             <div class="form-group">
                 <label for="email">Email</label>

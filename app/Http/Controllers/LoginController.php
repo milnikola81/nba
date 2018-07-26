@@ -27,18 +27,16 @@ class LoginController extends Controller
             "password"=>"required"
         ]);
 
-        $useremail = request('email');
+        // $useremail = request('email');
 
-        $user = User::where('email', $useremail)->get();
-        $is_verified = $user[0]->is_verified;
+        // $user = User::where('email', $useremail)->get();
+        // $is_verified = $user[0]->is_verified;
 
         $credentials = request()->only(['email','password']);
         //dd($credentials);
         if(!auth()->attempt(['email' => $credentials['email'], 'password' => $credentials['password']]))
         {
-            return redirect()->back()->withErrors([
-                'message' => 'Bad credentials. Please try again!'
-            ]);
+            return redirect()->back()->with('message', 'Bad credentials. Please try again!');
         }
 
         return redirect('/teams');

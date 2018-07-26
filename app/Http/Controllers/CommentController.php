@@ -7,6 +7,8 @@ use App\User;
 use App\Team;
 use App\Comment;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\CommentReceived;
+use Illuminate\Support\Facades\Mail;
 
 class CommentController extends Controller
 {
@@ -27,6 +29,8 @@ class CommentController extends Controller
             'user_id' => Auth::id()
             // 'team_id' => $team->id
         ]);
+
+        Mail::to($team->email)->send(new CommentReceived($team));
 
         return redirect('/teams/'.$team->id);         
     }

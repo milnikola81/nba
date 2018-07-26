@@ -45,5 +45,6 @@ class RegisterController extends Controller
     {
         $user->is_verified = 1;
         $user->save();
+        return redirect('/login');
     }
 }

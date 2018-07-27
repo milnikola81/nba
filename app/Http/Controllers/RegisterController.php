@@ -38,13 +38,15 @@ class RegisterController extends Controller
 
         Mail::to($user->email)->send(new VerifyAccount($user));
         
-        return redirect('/login');
+        return redirect('/login')
+        ->with('message', 'Thank you for registering on www.nba.com. Please check your email to verify account.');
     }
 
     public function verify(User $user)
     {
         $user->is_verified = 1;
         $user->save();
-        return redirect('/login');
+        return redirect('/login')
+        ->with('message', 'Your account has been verified. Proceed with logging in.');
     }
 }

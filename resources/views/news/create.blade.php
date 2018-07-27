@@ -4,7 +4,10 @@
     Create news
 @endsection
 
+
 @section('content')
+
+<h6 style="margin-top: 2rem; margin-bottom:2rem; color: gray"><em>You are posting as {{Auth::user()->name}}...</em></h6>
 
 <form method="POST" action="/news">
 

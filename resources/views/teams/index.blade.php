@@ -6,7 +6,7 @@
 
 @section('content')
 
-<h3  style="margin-top: 2rem">Timovi</h3>
+<h2 style="text-align: center; margin-bottom: 2rem;"><strong>Teams</strong></h2>
 
 <ul>
 @foreach($teams as $team)

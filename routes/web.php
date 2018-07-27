@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/news');
 });
 
 Route::get('/teams', 'TeamController@index');
@@ -33,5 +33,5 @@ Route::get('/verify/{user}', 'RegisterController@verify');
 
 Route::get('/news', 'NewsController@index');
 Route::get('/news/{news}', 'NewsController@show');
-Route::get('/news/team/{team}', 'NewsController@showPostsWithTag');
+Route::get('/news/team/{team}', 'NewsController@showNewsForTeam');
 

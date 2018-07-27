@@ -8,6 +8,10 @@
 
 <h2 style="text-align: center; margin-bottom: 2rem;"><strong>News</strong></h2>
 
+@if(session('message'))
+    <h6 style="margin-top: 2rem; margin-bottom:2rem; color: gray"><em>{{session('message')}}</em></h6>
+@endif
+
 @foreach($news as $article)
     <div class="blog-post">
         <h2 class="blog-post-title"><a href="/news/{{$article->id}}">{{ $article->title }}</a></h2>

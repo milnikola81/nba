@@ -10,7 +10,9 @@
         <p class="blog-post-meta">By <a href="/users/{{$news->user->id}}">{{ $news->user->name }}</a> on {{ $news->created_at }}</p>
         @if(!empty($news->teams[0]))
         <ul>
-            <li><a href="/teams/{{$news->teams[0]->id}}">{{ $news->teams[0]->name }}</a></li>
+            @foreach($news->teams as $team)
+            <li><a href="/teams/{{$team->id}}">{{ $team->name }}</a></li>
+            @endforeach
         </ul>
         @endif
         <p>{{ $news->content }}</p>

@@ -28,4 +28,27 @@ class NewsController extends Controller
         $news = Team::with('news')->find($team)->news()->latest()->paginate(10);
         return view('news.index', compact('news'));
     }
+
+    public function create() {
+        $teams = Team::all();
+        return view('news.create', compact('teams'));
+    }
+
+    public function store() {
+
+        $this->validate(request(), ['title' => 'required', 'content' => 'required', 'teams' => 'required|array']);
+
+        $news = News::create([
+            'title' => request('title'),
+            'content' => request('content'),
+            'user_id' => !empty(auth()->user())
+                ? auth()->user()->id
+                : 1
+        ]);
+
+        $news->teams()->attach(request('teams'));
+
+        return redirect('/news')
+        ->with('message', 'Thank you for publishing article on www.nba.com.');
+    }
 }

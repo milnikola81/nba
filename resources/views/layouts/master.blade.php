@@ -44,9 +44,25 @@
 
         @yield('content')
 
-        </div>
-      </div>
-    </div>
+        </div> <!-- end blog-main -->
+
+        <div class="col-sm-3 offset-sm-1 blog-sidebar">       
+          <div class="sidebar-module" style="margin-top: 2rem; background: white; padding: 0.5rem">
+            <h4>See news about</h4>
+            <ol class="list-unstyled">
+            @foreach ($teams as $team)
+              <li>
+                <a href="/news/team/{{ $team->id }}"> {{$team->name}} </a>
+                <!-- setovano u AppServiceProvider boot() -->
+              </li>
+            @endforeach
+            </ol>
+          </div><!-- end sidebar-module -->
+        </div><!-- end blog-sidebar -->
+
+      </div><!-- end row -->
+
+    </div><!-- end container -->
 
 
   </body>

@@ -10,6 +10,11 @@ use App\Team;
 class NewsController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth', ['only' => ['store', 'create']]);
+    }
+
     public function index()
     {
         $news = News::with('user')->with('teams')->latest()->paginate(10);

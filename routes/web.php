@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('/news');
+    return view('/welcome');
 });
 
 Route::get('/teams', 'TeamController@index');

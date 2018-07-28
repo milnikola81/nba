@@ -17,8 +17,11 @@ class VerifyAccount
     
     public function handle($request, Closure $next)
     {
+        
         $email = $request->get('email');
-        if($email)
+        $password = $request->get('password');
+
+        if($email && $password)
         {
             $user = User::where('email', $email)->get();
             if(!empty($user[0]))
@@ -30,7 +33,6 @@ class VerifyAccount
             else if(empty($user[0]))
             {
                 return redirect()->back()->with('message', 'No account associated with this email address. Please register to continue.');
-
             }
         }
 

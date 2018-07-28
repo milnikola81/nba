@@ -31,7 +31,8 @@ class RegisterController extends Controller
        $user = User::create([
             'name'=>request('name'),
             'email'=>request('email'),
-            'password'=>bcrypt(request('password'))
+            'password'=>bcrypt(request('password')),
+            'token_id'=>str_random(8)
         ]);
 
         // auth()->login($user);  //ugradjena funkcija za logovanje usera
@@ -42,11 +43,20 @@ class RegisterController extends Controller
         ->with('message', 'Thank you for registering on www.nba.com. Please check your email to verify account.');
     }
 
-    public function verify(User $user)
+    public function verify($token)
     {
-        $user->is_verified = 1;
-        $user->save();
-        return redirect('/login')
-        ->with('message', 'Your account has been verified. Proceed with logging in.');
+        $user = User::where('token_id', $token)->first();
+        if($user->is_verified < 1)
+        {
+            $user->is_verified = 1;
+            $user->save();
+            return redirect('/login')
+            ->with('message', 'Your account has been verified. Proceed with logging in.');
+        }
+        else
+        {
+            return redirect('/login')
+            ->with('message', 'Your account has already been verified. Please try logging in instead.');
+        }
     }
 }

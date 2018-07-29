@@ -36,4 +36,5 @@ Route::get('/news/create', 'NewsController@create');
 Route::get('/news/{news}', 'NewsController@show');
 Route::get('/news/team/{team}', 'NewsController@showNewsForTeam');
 Route::post('/news', 'NewsController@store');
+Route::get('/news/delete/{id}', 'NewsController@delete');
 

@@ -12,7 +12,7 @@ class NewsController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('auth', ['only' => ['store', 'create']]);
+        $this->middleware('auth', ['only' => ['store', 'create', 'delete']]);
     }
 
     public function index()
@@ -55,5 +55,14 @@ class NewsController extends Controller
 
         return redirect('/news')
         ->with('message', 'Thank you for publishing article on www.nba.com.');
+    }
+
+    public function delete($id) {
+        $news = News::find($id);
+        
+        News::find($id)->delete();
+
+        return redirect('/news')
+        ->with('message', 'News with title '.$news->title.' has been deleted');
     }
 }

@@ -13,11 +13,17 @@
 @endif
 
 @foreach($news as $article)
-    <div class="blog-post">
+    <div class="blog-post" style="margin-bottom: 1rem">
         <h2 class="blog-post-title"><a href="/news/{{$article->id}}">{{ $article->title }}</a></h2>
         <p class="blog-post-meta">By <a href="/users/{{$article->user->id}}">{{ $article->user->name }}</a> on {{ $article->created_at }}</p>
 
         <p>{{ $article->content }}</p>
+        
+        @if (auth()->user()->id === $article->user->id) <!--ako je ulogovani korisnik autor vesti, prikazi dugme za brisanje te vesti-->
+        <a class="btn btn-primary pull-right" href="/news/delete/{{$article->id}}">
+            Delete news
+        </a>
+        @endif
 
     </div><!-- /.blog-post -->
 @endforeach

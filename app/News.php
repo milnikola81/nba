@@ -21,4 +21,8 @@ class News extends Model
         return $this->belongsToMany(Team::class);
     }
 
+    protected $hidden = [
+        'id', 'created_at', 'updated_at'
+    ];
+
 }

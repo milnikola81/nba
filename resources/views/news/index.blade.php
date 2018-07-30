@@ -19,10 +19,12 @@
 
         <p>{{ $article->content }}</p>
         
-        @if (auth()->user()->id === $article->user->id) <!--ako je ulogovani korisnik autor vesti, prikazi dugme za brisanje te vesti-->
-        <a class="btn btn-primary pull-right" href="/news/delete/{{$article->id}}">
-            Delete news
-        </a>
+        @if(auth()->check())
+            @if (auth()->user()->id === $article->user->id) <!--ako je ulogovani korisnik autor vesti, prikazi dugme za brisanje te vesti-->
+            <a class="btn btn-primary pull-right" href="/news/delete/{{$article->id}}">
+                Delete news
+            </a>
+            @endif
         @endif
 
     </div><!-- /.blog-post -->
